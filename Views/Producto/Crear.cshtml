@@ -1,0 +1,82 @@
+﻿@model Repaso_t7.Models.Producto
+
+@{
+	ViewData["Title"] = "Crear";
+}
+
+<h1>Crear</h1>
+
+<h4>Producto</h4>
+<hr />
+@if (TempData["ErrorMessage"]!=null)
+
+{
+	<div class="alert alert-danger mt-4">
+		@TempData["ErrorMessage"]
+	</div>
+}
+
+@if (TempData["OkMessage"] != null)
+
+{
+	<div class="alert alert-success mt-4">
+		@TempData["OkMessage"]
+	</div>
+}
+
+<div class="row">
+	<div class="col-md-4">
+
+		@using (Html.BeginForm("Guardar", "Producto", FormMethod.Post))
+		{
+			<div class="form-group">
+				<label for="Nombre">Nombre</label>
+				<input type="text" class="form-control" name="Nombre"/>
+			</div>
+
+			<div class="form-group">
+				<label for="Precio">Precio</label>
+				<input type="number" class="form-control" name="Precio" step="any" />
+			</div>
+
+			<button type="submit" class="btn btn-primary">Guardar</button>
+		}
+
+
+		<!--
+<form asp-action="Guardar">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			
+			<div class="form-group">
+							<label asp-for="Id" class="control-label"></label>
+							<input asp-for="Id" class="form-control" />
+							<span asp-validation-for="Id" class="text-danger"></span>
+						</div>
+	
+			<div class="form-group">
+				<label asp-for="Nombre" class="control-label"></label>
+				<input asp-for="Nombre" class="form-control" />
+				<span asp-validation-for="Nombre" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Precio" class="control-label"></label>
+				<input asp-for="Precio" class="form-control" />
+				<span asp-validation-for="Precio" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Create" class="btn btn-primary" />
+			</div>
+		</form>
+		-->
+	</div>
+</div>
+
+<div>
+	<a asp-action="Index">Volver a la lista</a>
+</div>
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+}

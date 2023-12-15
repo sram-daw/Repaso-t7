@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Repaso_t7.Models.Producto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@if (TempData["ErrorMessage"] != null)
+
+{
+	<div class="alert alert-danger mt-4">
+		@TempData["ErrorMessage"]
+	</div>
+}
+@if (TempData["OkMessage"] != null)
+
+{
+    <div class="alert alert-success mt-4">
+        @TempData["OkMessage"]
+    </div>
+}
+
+<h1>Tabla de productos</h1>
+<p>Una lista completa de todos nuestros productos en stock.</p>
+@Html.Partial("_TablaProductos")
+
+
